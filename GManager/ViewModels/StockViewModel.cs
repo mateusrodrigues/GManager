@@ -61,7 +61,7 @@ namespace GManager.ViewModels
                 InvokePropertyChanged(new PropertyChangedEventArgs("TotalPotentialValue"));
             }
         }
-
+        
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -71,7 +71,7 @@ namespace GManager.ViewModels
             if (handler != null) handler(this, e);
         }
         #endregion
-
+        
         private void RefreshItems()
         {
             if (!refreshing)
@@ -89,6 +89,66 @@ namespace GManager.ViewModels
                     TotalPotentialValue += m.AvailableQuantity * m.SellingPrice;
                 });
                 refreshing = false;
+            }
+        }
+
+        public int AddProduct(string name, decimal buyingPrice, decimal sellingPrice)
+        {
+            Product product = new Product()
+            {
+                Name = name,
+                AvailableQuantity = 0,
+                SellingPrice = sellingPrice,
+                BuyingPrice = buyingPrice
+            };
+            
+            try
+            {
+                context.Products.Add(product);
+                return context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new InvalidOperationException("Não foi possível adicionar o produto.");
+            }
+            finally
+            {
+                RefreshItems();
+            }
+        }
+
+        public int RemoveProduct(int id)
+        {
+            try
+            {
+                var product = context.Products.Find(id);
+                context.Products.Remove(product);
+                return context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new InvalidOperationException("Não foi possível remover o produto.");
+            }
+            finally
+            {
+                RefreshItems();
+            }
+        }
+
+        public int EditProduct(Product product)
+        {
+            try
+            {
+                context.Entry<Product>(product).State = System.Data.Entity.EntityState.Modified;
+                return context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new InvalidOperationException("Não foi possível editar o produto.");
+            }
+            finally
+            {
+                RefreshItems();
             }
         }
     }

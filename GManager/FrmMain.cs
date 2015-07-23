@@ -19,7 +19,7 @@ namespace GManager
 
         private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmEstoque form = new FrmEstoque();
+            FrmStock form = new FrmStock();
             form.MdiParent = this;
             form.Show();
         }

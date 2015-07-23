@@ -19,10 +19,10 @@ namespace GManager.Models
 
         [Required]
         [DataType(DataType.Currency)]
-        public decimal SellingPrice { get; set; }
+        public decimal BuyingPrice { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
-        public decimal BuyingPrice { get; set; }
+        public decimal SellingPrice { get; set; }
     }
 }

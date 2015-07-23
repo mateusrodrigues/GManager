@@ -1,6 +1,6 @@
 ﻿namespace GManager
 {
-    partial class FrmEstoque
+    partial class FrmStock
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEstoque.Location = new System.Drawing.Point(12, 12);
+            this.dataGridEstoque.MultiSelect = false;
             this.dataGridEstoque.Name = "dataGridEstoque";
             this.dataGridEstoque.ReadOnly = true;
             this.dataGridEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -81,6 +82,7 @@
             this.btnEditProduct.TabIndex = 2;
             this.btnEditProduct.Text = "Editar";
             this.btnEditProduct.UseVisualStyleBackColor = true;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // btnRemoveProduct
             // 
@@ -90,6 +92,7 @@
             this.btnRemoveProduct.TabIndex = 1;
             this.btnRemoveProduct.Text = "Remover";
             this.btnRemoveProduct.UseVisualStyleBackColor = true;
+            this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // btnAddProduct
             // 
@@ -99,6 +102,7 @@
             this.btnAddProduct.TabIndex = 0;
             this.btnAddProduct.Text = "Adicionar";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // gbxInfo
             // 
@@ -168,7 +172,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Total de Produtos:";
             // 
-            // FrmEstoque
+            // FrmStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -176,7 +180,7 @@
             this.Controls.Add(this.gbxInfo);
             this.Controls.Add(this.gbxActions);
             this.Controls.Add(this.dataGridEstoque);
-            this.Name = "FrmEstoque";
+            this.Name = "FrmStock";
             this.Text = "Estoque";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEstoque)).EndInit();
             this.gbxActions.ResumeLayout(false);
