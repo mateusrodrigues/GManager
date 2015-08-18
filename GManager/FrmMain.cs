@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GManager.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,12 @@ namespace GManager
             FrmStock form = new FrmStock();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAboutBox form = new FrmAboutBox();
+            form.ShowDialog();
         }
     }
 }
